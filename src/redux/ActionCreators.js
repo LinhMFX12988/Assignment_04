@@ -20,7 +20,7 @@ export const fetchStaffs = () => (dispatch) => {
     dispatch(staffsLoading(true));
 
     setTimeout(() => {
-        dispatch(addStaff(STAFFS, DEPARTMENTS))
+        dispatch(addStaff(STAFFS))
     }, 2000)
 }
 
@@ -33,7 +33,7 @@ export const staffsFailed = (errmess) => ({
     payload: errmess
 });
 
-export const renderStaff = (staffs) => ({
-    type: ActionTypes.RENDER_STAFF,
-    payload: staffs
-});
+// export const renderStaff = (staffs) => ({
+//     type: ActionTypes.RENDER_STAFF,
+//     payload: staffs
+// });

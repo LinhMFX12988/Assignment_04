@@ -23,17 +23,16 @@ const mapDispatchToProps = {
 };
 
 function App(props) {
-  console.log('props', props.staffs)
+  // console.log('props', props.staffs)
 
-  componentDidMount = () => {
-    props.fetchStaffs();
-  }
+  // const componentDidMount = () => {
+  //   props.fetchStaffs();
+  // }
 
   //--------------Render detail staff----------------
   const renderDetailStaff = ({ match }) =>
     <StaffDetail
-      staffs={props.staffs.staffs.filter((staffs) =>
-        staffs.id === parseInt(match.params.id, 10))[0]}
+        staffs={props.staffs.staffs.filter((staffs) => staffs.id === parseInt(match.params.id, 10))[0]}
         addStaff={props.addStaff}
         isLoading={props.dishes.isLoading}
         errMess={props.dishes.errMess}
@@ -43,7 +42,7 @@ function App(props) {
     <>
       <Header />
       <Switch>
-        <Route exact path="/staffs" component={() => <StaffList staffs={props.staffs} addStaff={props.addStaff} isLoading={props.dishes.isLoading} errMess={props.dishes.errMess}/>} />
+        <Route exact path="/staffs" component={() => <StaffList staffs={props.staffs} addStaff={props.addStaff} />} />
         <Route path="/staffs/:id" component={renderDetailStaff} />
         <Route path="/department" component={() => <Department departments={props.departments} />} />
         <Route path="/salary" component={() => <Salary salary={props.staffs} />} />

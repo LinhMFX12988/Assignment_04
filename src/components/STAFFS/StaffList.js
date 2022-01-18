@@ -30,8 +30,8 @@ function StaffList(props) {
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
-
-  const filterStaff = props.staffs.filter((staffItem) => {
+  console.log('stafflist', props.staffs)
+  const filterStaff = props.staffs.staffs.filter((staffItem) => {
     return staffItem.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
   });
   //-----------------End Search---------------------
@@ -59,18 +59,18 @@ function StaffList(props) {
   );
   //-----------------End Add Staff------------------
 
-  const renderStaff = filterStaff.map((staff, isLoading, errMess) => {
-    if (isLoading) {
-      return (
-        <Loading />
-      );
-    }
-    else if (errMess) {
-      return (
-        <h4>{errMess}</h4>
-      );
-    }
-    else
+  const renderStaff = filterStaff.map((staff) => {
+    // if (isLoading) {
+    //   return (
+    //     <Loading />
+    //   );
+    // }
+    // else if (errMess) {
+    //   return (
+    //     <h4>{errMess}</h4>
+    //   );
+    // }
+    // else
       return (
         <div key={staff.id} className="col-6 col-md-4 col-xl-2">
           <Card style={{ border: "1px solid rgb(112, 112, 112)" }}>
@@ -329,7 +329,7 @@ function StaffList(props) {
           </nav>
         </div>
         <br />
-        <div className="row">{ <renderStaff isLoading={props.dishesLoading} errMess={props.dishesErrMess} />}</div>
+        <div className="row">{renderStaff}</div>
         <br />
       </div>
     </div>
