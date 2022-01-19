@@ -2,4 +2,4 @@ export const ADD_STAFF = 'ADD_STAFF';
 export const UPDATE_DEPARTMENT = 'UPDATE_DEPARTMENT';
 export const STAFF_LOADING = 'STAFF_LOADING';
 export const STAFF_FAILED = 'STAFF_FAILED';
-export const RENDER_STAFF = 'RENDER_STAFF';
+

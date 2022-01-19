@@ -3,7 +3,7 @@ import { Card, Breadcrumb, BreadcrumbItem, CardBody, CardText, CardTitle } from 
 import { Link } from 'react-router-dom';
 
 function Salary(props) {
-    const [onSort, setOnSort] = useState(props.salary.staffs)
+    const [onSort, setOnSort] = useState(props.salary)
     const [sortDown, setSortDown] = useState(true)
 
     //-------------------Sort ID----------------------

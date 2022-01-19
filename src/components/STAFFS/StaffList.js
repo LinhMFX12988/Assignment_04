@@ -14,10 +14,9 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Control, LocalForm, Errors } from "react-redux-form";
-import { Loading } from "../Loading";
 
 ///// Validators
-const required = (val) => { return val && val.length };
+const required = (val) =>{return val && val.length};
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => !(val) || (val.length >= len);
 
@@ -30,24 +29,23 @@ function StaffList(props) {
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
-  console.log('stafflist', props.staffs)
-  const filterStaff = props.staffs.staffs.filter((staffItem) => {
+
+  const filterStaff = props.staffs.filter((staffItem) => {
     return staffItem.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
   });
   //-----------------End Search---------------------
   //-----------------Add Staff----------------------
   const handelAddFormSubmit = (values) => {
     props.addStaff(
-      values.name,
-      values.doB,
-      values.startDate,
-      values.department,
-      values.salaryScale,
-      values.annualLeave,
+      values.name, 
+      values.doB, 
+      values.startDate, 
+      values.department, 
+      values.salaryScale, 
+      values.annualLeave, 
       values.overTime
-    )
-  };
-
+    )};
+ 
   const toggleAddFormModal = () => {
     setToggleStaffs(!toggleStaffs);
   };
@@ -60,32 +58,21 @@ function StaffList(props) {
   //-----------------End Add Staff------------------
 
   const renderStaff = filterStaff.map((staff) => {
-    // if (isLoading) {
-    //   return (
-    //     <Loading />
-    //   );
-    // }
-    // else if (errMess) {
-    //   return (
-    //     <h4>{errMess}</h4>
-    //   );
-    // }
-    // else
-      return (
-        <div key={staff.id} className="col-6 col-md-4 col-xl-2">
-          <Card style={{ border: "1px solid rgb(112, 112, 112)" }}>
-            <Link to={`/staffs/${staff.id}`}>
-              <CardImg src={staff.image} />
-              <CardTitle
-                className="text-center"
-                style={{ color: "black", fontSize: "90%" }}
-              >
-                {staff.name}
-              </CardTitle>
-            </Link>
-          </Card>
-        </div>
-      );
+    return (
+      <div key={staff.id} className="col-6 col-md-4 col-xl-2">
+        <Card style={{ border: "1px solid rgb(112, 112, 112)" }}>
+          <Link to={`/staffs/${staff.id}`}>
+            <CardImg src={staff.image} />
+            <CardTitle
+              className="text-center"
+              style={{ color: "black", fontSize: "90%" }}
+            >
+              {staff.name}
+            </CardTitle>
+          </Link>
+        </Card>
+      </div>
+    );
   });
 
   return (

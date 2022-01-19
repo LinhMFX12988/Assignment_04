@@ -1,6 +1,5 @@
 import * as ActionTypes from './ActionTypes';
 import { STAFFS } from "../shared/staffs";
-import { DEPARTMENTS } from "../shared/staffs";
 
 export const addStaff = (name, doB, startDate, department, salaryScale, annualLeave, overTime) => ({
             type1: ActionTypes.ADD_STAFF,
@@ -32,8 +31,3 @@ export const staffsFailed = (errmess) => ({
     type: ActionTypes.STAFF_FAILED,
     payload: errmess
 });
-
-// export const renderStaff = (staffs) => ({
-//     type: ActionTypes.RENDER_STAFF,
-//     payload: staffs
-// });

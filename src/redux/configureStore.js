@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { Staffs } from './staffs';
-import { Departments } from './departments';
+import { Staffs } from '../components/STAFFS/staffsReducer';
+import { Departments } from '../components/DEPARTMENTS/departmentsReducer';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
