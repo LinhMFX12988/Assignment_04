@@ -30,7 +30,7 @@ function StaffList(props) {
     setSearch(e.target.value);
   };
 
-  const filterStaff = props.staffs.filter((staffItem) => {
+  const filterStaff = props.staffs.staffs.filter((staffItem) => {
     return staffItem.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
   });
   //-----------------End Search---------------------

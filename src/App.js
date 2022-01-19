@@ -8,29 +8,29 @@ import Footer from "./components/Footer";
 import "./App.css";
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addStaff } from './redux/ActionCreators';
+import { addStaff, fetchStaffs } from './redux/ActionCreators';
 
 const mapStateToProps = state => {
-  // console.log('update dps:', state.departments)
   return {
     staffs: state.staffs,
     departments: state.departments
   };
 };
 
-const mapDispatchToProps = {
-  addStaff: (name, doB, startDate, department, salaryScale, annualLeave, overTime) =>
-    addStaff(name, doB, startDate, department, salaryScale, annualLeave, overTime)
-};
+const mapDispatchToProps = (dispatch) => ({
+  addStaff: (name, doB, startDate, department, salaryScale, annualLeave, overTime) => dispatch(addStaff(name, doB, startDate, department, salaryScale, annualLeave, overTime)),
+  fetchStaffs: () => {dispatch(fetchStaffs())}
+});
 
 function App(props) {
 
   //--------------Render detail staff----------------
   const renderDetailStaff = ({ match }) =>
     <StaffDetail
-      staffs={props.staffs.filter((staffs) =>
-        staffs.id === parseInt(match.params.id, 10))[0]}
+        staffs={props.staffs.staffs.filter((staffs) => staffs.id === parseInt(match.params.id, 10))[0]}
         addStaff={props.addStaff}
+        staffsLoading={props.staffs.isLoading}
+        staffsErrMess={props.staffs.errMess}
     />
 
   return (

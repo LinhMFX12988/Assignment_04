@@ -2,8 +2,10 @@ import React from "react";
 import { CardImg, CardTitle, CardText, CardBody, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import dateFormat from "dateformat";
 import { Link } from "react-router-dom";
+import { Loading } from "../Loading";
 
 function StaffDetail(props) {
+    console.log('props', props)
     return (
         <div className="container">
             <hr />
