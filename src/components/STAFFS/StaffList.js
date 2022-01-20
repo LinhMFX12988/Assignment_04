@@ -14,6 +14,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Control, LocalForm, Errors } from "react-redux-form";
+import { FadeTransform } from 'react-animation-components';
 
 ///// Validators
 const required = (val) =>{return val && val.length};
@@ -21,7 +22,6 @@ const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => !(val) || (val.length >= len);
 
 function StaffList(props) {
-
   const [search, setSearch] = useState("");
   const [toggleStaffs, setToggleStaffs] = useState(false);
 
@@ -31,7 +31,7 @@ function StaffList(props) {
   };
 
   const filterStaff = props.staffs.staffs.filter((staffItem) => {
-    // console.log('test:', props)
+    console.log('test:', props.staffs)
     return staffItem.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;    
   });
   //-----------------End Search---------------------
@@ -60,6 +60,10 @@ function StaffList(props) {
 
   const renderStaff = filterStaff.map((staff) => {
     return (
+      <FadeTransform in
+        transformProps={{
+          exitTransform: 'scale(0.5) translateY(-50%)'
+        }}>
       <div key={staff.id} className="col-6 col-md-4 col-xl-2">
         <Card style={{ border: "1px solid rgb(112, 112, 112)" }}>
           <Link to={`/staffs/${staff.id}`}>
@@ -71,8 +75,9 @@ function StaffList(props) {
               {staff.name}
             </CardTitle>
           </Link>
-        </Card>
+        </Card> 
       </div>
+      </FadeTransform>
     );
   });
 

@@ -9,6 +9,7 @@ import "./App.css";
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addStaff, fetchStaffs } from './redux/ActionCreators';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const mapStateToProps = state => {
   return {
@@ -36,13 +37,17 @@ function App(props) {
   return (
     <>
       <Header />
-      <Switch>
-        <Route exact path="/staffs" component={() => <StaffList staffs={props.staffs} addStaff={props.addStaff} />} />
-        <Route path="/staffs/:id" component={renderDetailStaff} />
-        <Route path="/department" component={() => <Department departments={props.departments} />} />
-        <Route path="/salary" component={() => <Salary salary={props.staffs} />} />
-        <Redirect to="/staffs" />
-      </Switch>
+        <TransitionGroup>
+          <CSSTransition key={props.location.key} classNames="page" timeout={300}>
+            <Switch>
+              <Route exact path="/staffs" component={() => <StaffList staffs={props.staffs} addStaff={props.addStaff} />} />
+              <Route path="/staffs/:id" component={renderDetailStaff} />
+              <Route path="/department" component={() => <Department departments={props.departments} />} />
+              <Route path="/salary" component={() => <Salary salary={props.staffs} />} />
+              <Redirect to="/staffs" />
+            </Switch>
+          </CSSTransition>
+        </TransitionGroup>
       <Footer />
     </>
   );
