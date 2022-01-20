@@ -31,12 +31,13 @@ function StaffList(props) {
   };
 
   const filterStaff = props.staffs.staffs.filter((staffItem) => {
-    return staffItem.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+    // console.log('test:', props)
+    return staffItem.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;    
   });
   //-----------------End Search---------------------
-  //-----------------Add Staff----------------------
+  //-----------------Add Staff----------------------  
   const handelAddFormSubmit = (values) => {
-    props.addStaff(
+    props.addStaff( 
       values.name, 
       values.doB, 
       values.startDate, 

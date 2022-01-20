@@ -29,15 +29,15 @@ function App(props) {
     <StaffDetail
         staffs={props.staffs.staffs.filter((staffs) => staffs.id === parseInt(match.params.id, 10))[0]}
         addStaff={props.addStaff}
-        staffsLoading={props.staffs.isLoading}
-        staffsErrMess={props.staffs.errMess}
+        isLoading={props.staffs.isLoading}
+        errMess={props.staffs.errMess}
     />
 
   return (
     <>
       <Header />
       <Switch>
-        <Route exact path="/staffs" component={() => <StaffList staffs={props.staffs} addStaff={props.addStaff}/>} />
+        <Route exact path="/staffs" component={() => <StaffList staffs={props.staffs} addStaff={props.addStaff} />} />
         <Route path="/staffs/:id" component={renderDetailStaff} />
         <Route path="/department" component={() => <Department departments={props.departments} />} />
         <Route path="/salary" component={() => <Salary salary={props.staffs} />} />
