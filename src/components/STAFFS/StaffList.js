@@ -31,7 +31,6 @@ function StaffList(props) {
   };
 
   const filterStaff = props.staffs.staffs.filter((staffItem) => {
-    console.log('test:', props.staffs)
     return staffItem.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;    
   });
   //-----------------End Search---------------------
@@ -60,11 +59,11 @@ function StaffList(props) {
 
   const renderStaff = filterStaff.map((staff) => {
     return (
+      <div key={staff.id} className="col-6 col-md-4 col-xl-2">
       <FadeTransform in
         transformProps={{
           exitTransform: 'scale(0.5) translateY(-50%)'
         }}>
-      <div key={staff.id} className="col-6 col-md-4 col-xl-2">
         <Card style={{ border: "1px solid rgb(112, 112, 112)" }}>
           <Link to={`/staffs/${staff.id}`}>
             <CardImg src={staff.image} />
@@ -75,9 +74,9 @@ function StaffList(props) {
               {staff.name}
             </CardTitle>
           </Link>
-        </Card> 
-      </div>
+        </Card>
       </FadeTransform>
+      </div>
     );
   });
 

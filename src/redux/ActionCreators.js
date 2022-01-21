@@ -1,5 +1,5 @@
 import * as ActionTypes from './ActionTypes';
-import { STAFFS } from "../shared/staffs";
+// import { STAFFS } from "../shared/staffs";
 
 export const addStaff = (name, doB, startDate, department, salaryScale, annualLeave, overTime) => ({
             type: ActionTypes.ADD_STAFF,
@@ -15,13 +15,16 @@ export const addStaff = (name, doB, startDate, department, salaryScale, annualLe
             }
 });
 
-export const fetchStaffs = () => (dispatch) => {
-    dispatch(staffsLoading(true));
+// export const fetchStaffs = () => (dispatch) => {
+//     dispatch(staffsLoading(true));
 
-    setTimeout(() => {
-        dispatch(addStaff(STAFFS))
-    }, 2000)
-}
+//     setTimeout(() => {
+//         dispatch(addStaff(STAFFS))
+
+//     }, 2000)
+//     dispatch(staffsLoading(false));
+
+// }
 
 export const staffsLoading = () => ({
     type: ActionTypes.STAFF_LOADING

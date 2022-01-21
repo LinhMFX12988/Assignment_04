@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import "./App.css";
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addStaff, fetchStaffs } from './redux/ActionCreators';
+import { addStaff } from './redux/ActionCreators';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const mapStateToProps = state => {
@@ -20,7 +20,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => ({
   addStaff: (name, doB, startDate, department, salaryScale, annualLeave, overTime) => dispatch(addStaff(name, doB, startDate, department, salaryScale, annualLeave, overTime)),
-  fetchStaffs: () => {dispatch(fetchStaffs())}
+  // fetchStaffs: () => {dispatch(fetchStaffs())}
 });
 
 function App(props) {

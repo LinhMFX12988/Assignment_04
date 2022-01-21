@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card, Breadcrumb, BreadcrumbItem, CardBody, CardText, CardTitle } from "reactstrap";
 import { Link } from 'react-router-dom';
+import { FadeTransform } from 'react-animation-components';
 
 function Salary(props) {
     const [onSort, setOnSort] = useState(props.salary.staffs)
@@ -37,27 +38,32 @@ function Salary(props) {
     const renderSalary = onSort.map((salary) => {
         return (
             <div key={salary.id} className="col-12 col-md-6 col-lg-4">
-                <Card className="text-center"
-                    style={{
-                        backgroundColor: "#c0bdc4",
-                        border: "1px solid rgb(112, 112, 112)"
-                    }}>
-                    <h2> {salary.name}</h2><hr />
-                    <CardBody>
-                        <CardText>Mã nhân viên: {salary.id}</CardText>
-                        <CardText>Hệ số lương: 1</CardText>
-                        <CardText>Số giờ làm thêm: {salary.overTime}</CardText>
-                    </CardBody>
-                    <CardBody >
-                        <Card style={{
+                <FadeTransform in
+                    transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
+                    <Card className="text-center"
+                        style={{
+                            backgroundColor: "#c0bdc4",
                             border: "1px solid rgb(112, 112, 112)"
                         }}>
-                            <CardTitle>
-                                Lương: {3000000 + salary.overTime * 200000} đ
-                            </CardTitle>
-                        </Card>
-                    </CardBody>
-                </Card>
+                        <h2> {salary.name}</h2><hr />
+                        <CardBody>
+                            <CardText>Mã nhân viên: {salary.id}</CardText>
+                            <CardText>Hệ số lương: 1</CardText>
+                            <CardText>Số giờ làm thêm: {salary.overTime}</CardText>
+                        </CardBody>
+                        <CardBody >
+                            <Card style={{
+                                border: "1px solid rgb(112, 112, 112)"
+                            }}>
+                                <CardTitle>
+                                    Lương: {3000000 + salary.overTime * 200000} đ
+                                </CardTitle>
+                            </Card>
+                        </CardBody>
+                    </Card>
+                </FadeTransform>
             </div>
         );
     });
